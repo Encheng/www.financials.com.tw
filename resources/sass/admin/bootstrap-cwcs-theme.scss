@@ -1,0 +1,74 @@
+.navbar {
+  background-color: #007fbd;
+}
+
+.navbar-inverse {
+  border-color: transparent;
+}
+
+.navbar-inverse .navbar-brand {
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  font-size: 0.8em;
+  color: #b8f1fd;
+  background-color: #00547d;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #003751;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  font-size: 0.8em;
+  color: #ffffff;
+}
+
+.nav-sidebar > .active > a {
+  color: #FFF;
+  background-color: #007fbd;
+}
+
+.nav-sidebar > .active > a:hover {
+  color: #ffffff;
+  background-color: #878787;
+}
+
+.nav > li > a {
+  color: #007fbd;
+}
+
+.nav > li > a:focus,
+.nav > li > a:hover {
+  color: #ffffff;
+  background-color: #878787;
+}
+
+.btn-info:hover {
+  color: #56bbdf;
+  background-color: #ffffff;
+  border-color: #269ABC;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #eeeeee;
+}
+
+.btn-success {
+  font-size: 0.9em;
+}
+
+.alert-warning {
+  line-height: 2em;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a:hover {
+  color: #b8f1fd;
+  background-color: #00547d;
+}

@@ -45,6 +45,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
             'read' => [
                 'host' => env('DB_HOST_READ'),
             ],
@@ -78,7 +79,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'schema' => 'public',
+            'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
 
@@ -127,13 +128,13 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
+            'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
         ],
@@ -141,11 +142,18 @@ return [
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
+            'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+        'log' => [
+            'url' => env('REDIS_LOG_URL'),
+            'host' => env('REDIS_LOG_HOST', '127.0.0.1'),
+            'password' => env('REDIS_LOG_PASSWORD', null),
+            'port' => env('REDIS_LOG_PORT', '6379'),
+            'database' => env('REDIS_LOG_DB', '2'),
+        ],
     ],
 
 ];

@@ -1,0 +1,36 @@
+grumphp:
+  hooks_dir: ~
+  hooks_preset: local
+  git_hook_variables:
+    VAGRANT_HOST_DIR: .
+    VAGRANT_PROJECT_DIR: /var/www
+    EXEC_GRUMPHP_COMMAND: exec
+    ENV: { }
+  stop_on_failure: false
+  ignore_unstaged_changes: false
+  hide_circumvention_tip: false
+  process_timeout: 60
+  ascii:
+    failed: grumphp-fail.txt
+    succeeded: grumphp-success.txt
+  parallel:
+    enabled: true
+    max_workers: 32
+  fixer:
+    enabled: true
+    fix_by_default: false
+  environment:
+    files: [ ]
+    variables: { }
+    paths: [ ]
+  tasks:
+    phpunit: null
+    phpcs: null
+    phplint: null
+    # phpstan:
+    #   memory_limit: "256M"
+    yamllint:
+      whitelist_patterns:
+        - /.cicd/(.*)
+  testsuites: [ ]
+  extensions: [ ]

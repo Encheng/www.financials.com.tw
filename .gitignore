@@ -12,16 +12,11 @@ _ide_helper*.php
 /public/css/*
 /public/js/*
 /public/fonts/*
-/public/images/*
 /public/mix-manifest.json
-/public/cdn
-
 
 # storage
 /public/storage
 /storage/*.key
-/storage/debugbar
-/storage/cdn
 
 # config
 .env
@@ -42,5 +37,3 @@ yarn-error.log
 # other
 .DS_Store
 Thumbs.db
-
-/.history

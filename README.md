@@ -1,78 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Read Me
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## environment
 
-## About Laravel
+| 名稱     | 版本    | 備註               |
+| -------- | ------- | ------------------ |
+| Laravel  | ^9.0    | PHP最低版本須為8.0 |
+| Composer | 2.1.14  |                    |
+| Node.js  | 12.18.3 |                    |
+| Vue      | 2.6.14  |                    |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Laravel Release Notes](https://laravel.com/docs/9.x/releases)
+- [Upgrade guides for Composer 1.x to 2.0](https://getcomposer.org/upgrade/UPGRADE-2.0.md)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Node.js Releases](https://nodejs.org/en/about/releases/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Local環境切換node.js版本**
 
-## Learning Laravel
+```bash
+nvm install 12.18.3
+nvm use 12.18.3
+node -v
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Package
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| 名稱      | 版本   | 備註                            |
+| --------- | ------ | ------------------------------- |
+| AdminLTE  | ^2.4   |                                 |
+| Bootstrap | v4.3.1 | Bootstrap 4 Dropping Glyphicons |
 
-## Laravel Sponsors
+## Route Naming Rule
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+ref. [resource-controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+| Verb      | URI                    | Action  | Route Name     |
+| --------- | ---------------------- | ------- | -------------- |
+| GET       | `/photos`              | index   | photos.index   |
+| GET       | `/photos/create`       | create  | photos.create  |
+| POST      | `/photos`              | store   | photos.store   |
+| GET       | `/photos/{photo}`      | show    | photos.show    |
+| GET       | `/photos/{photo}/edit` | edit    | photos.edit    |
+| PUT/PATCH | `/photos/{photo}`      | update  | photos.update  |
+| DELETE    | `/photos/{photo}`      | destroy | photos.destroy |
 
-## Contributing
+## Redis Cache Naming Rule
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+使用`:`區分資源階層  
 
-## Code of Conduct
+```bash
+SET admin:{id}:roles 'somestring'
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+刪除所有用戶roles快取
 
-## Security Vulnerabilities
+```bash
+DEL admin:*:role
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Seeder
 
-## License
+```bash
+# cms seeder
+php artisan migrate:refresh
+php artisan db:seed --class="Database\\Seeders\\Admin\\DatabaseSeeder"
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 後台權限設置
+
+權限群組`\App\Models\Entities\Role::class`，欲新增群組請於`class`中以`constan`宣告群組名稱，並同時於`list`中加入新增的群組。
+
+```php
+const ADMIN = 'admin';
+const MANAGER = 'manager';
+
+public static function list()
+{
+    return [self::ADMIN => '總管理', self::MANAGER => '管理員'];
+}
+```
+
+`model`修改完成後，配置`config/permission.php`中宣告該群組可存取的`controller`。
+
+> `Role::ADMIN`為最高權限，因此預設為可存取全部的controller; 其餘群組至少需配置`IndexController`
+
+```php
+return [
+    \App\Models\Entities\Role::ADMIN => [],
+    \App\Models\Entities\Role::MANAGER => [
+        \App\Http\Controllers\Admin\IndexController::class,
+    ],
+];
+```
+
+## NavItems配置
+
+`nav_items`中若無`route_name`者(資料夾節點)需配置`role`。依照`role`判斷其是否顯示(包含子選單項目)。
+
+| id   | parent_id | active_nav_item_id | name     | route_name | role  | icon         | display | created_at            | updated_at            |
+| ---- | --------- | ------------------ | -------- | ---------- | ----- | ------------ | ------- | --------------------- | --------------------- |
+| 2    | 1         |                    | 帳號管理 |            | admin | fa fa-folder | 1       | 2019-12-01 01:26:06.0 | 2019-12-01 01:26:06.0 |
+
+若有`route_name`則不須配置`role`，透過`config/permission.php`判斷是否顯示與存取`controller`。
+
+| id   | parent_id | active_nav_item_id | name     | route_name           | role | icon       | display | created_at            | updated_at            |
+| ---- | --------- | ------------------ | -------- | -------------------- | ---- | ---------- | ------- | --------------------- | --------------------- |
+| 3    | 2         |                    | 帳號列表 | admin.accounts.index |      | fa fa-list | 1       | 2019-12-01 01:26:06.0 | 2019-12-01 01:26:06.0 |
+
+進入route後展開上層folder。
+
+| id   | parent_id | active_nav_item_id | name     | route_name          | role | icon | display | created_at            | updated_at            |
+| ---- | --------- | ------------------ | -------- | ------------------- | ---- | ---- | ------- | --------------------- | --------------------- |
+| 5    | 2         | 2                  | 帳號編輯 | admin.accounts.edit |      |      | 0       | 2019-12-01 01:26:06.0 | 2019-12-01 01:26:06.0 |
+
+> 由於route權限判斷抽離，nav_items僅需紀錄上述三種類型
+> 實作方式請參考`\Database\Seeders\Admin\AdminNavItemSeeder::class`
+
+### 清除快取
+
+```bash
+php artisan nav_items:cache_clear
+```
