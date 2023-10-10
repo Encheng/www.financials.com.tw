@@ -36,9 +36,18 @@ return [
     */
 
     'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
         ],
     ],
 
@@ -60,6 +69,10 @@ return [
     */
 
     'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Entities\User::class,
+        ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Entities\Admin::class,

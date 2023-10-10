@@ -2,10 +2,13 @@
 
 namespace App\Models\Entities;
 
+use App\Models\Entities\BasicScopeTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    use BasicScopeTrait;
+
     protected $table = 'companies';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -19,8 +22,8 @@ class Company extends Model
         'nav',
     ];
 
-    public function financialStatement()
+    public function companyFinancialStatement()
     {
-        return $this->hasMany(financialStatement::class);
+        return $this->hasMany(CompanyFinancialStatement::class);
     }
 }

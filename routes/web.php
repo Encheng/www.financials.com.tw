@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'IndexController@index');
+//首頁
+Route::get('', 'IndexController@index')
+    ->name('front.index');

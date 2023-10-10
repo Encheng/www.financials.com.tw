@@ -5,10 +5,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Traits\SchemaTrait;
 
-class CreateFinancialStatementsTable extends Migration
+class CreateCompanyFinancialStatementsTable extends Migration
 {
     use SchemaTrait;
-    protected $table_name = 'financial_statements';
+    protected $table_name = 'company_financial_statements';
 
     /**
      * Run the migrations.
@@ -24,6 +24,7 @@ class CreateFinancialStatementsTable extends Migration
             $table->float('eps');
             $table->float('div');
             $table->float('roe');
+            $table->timestamps();
         });
     }
 

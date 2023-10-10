@@ -39,4 +39,32 @@ Route::middleware(['admin_auth:admin', 'gates'])
                   Route::put('{id}', 'AccountController@update')
                        ->name('admin.accounts.update');
               });
+
+         Route::prefix('companies')
+              ->group(function () {
+                  Route::get('/', 'CompanyController@index')
+                       ->name('admin.company.index');
+                  Route::get('create', 'CompanyController@create')
+                       ->name('admin.company.create');
+                  Route::post('/', 'CompanyController@store')
+                       ->name('admin.company.store');
+                  Route::get('{id}/edit', 'CompanyController@edit')
+                       ->name('admin.company.edit');
+                  Route::put('{id}', 'CompanyController@update')
+                       ->name('admin.company.update');
+                  Route::get('{id}/analyze', 'CompanyController@analyze')
+                       ->name('admin.company.analyze');
+                    Route::prefix('financial')
+                       ->group(function () {
+                         Route::get('create', 'CompanyController@financialCreate')
+                              ->name('admin.company.financial.create');
+                         Route::post('/', 'CompanyController@financialStore')
+                              ->name('admin.company.financial.store');
+                         Route::get('import', 'CompanyController@import')
+                              ->name('admin.company.financial.import');
+                         Route::post('import_process', 'CompanyController@importProcess')
+                              ->name('admin.company.financial.import.process');
+
+                    });
+              });
      });

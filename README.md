@@ -45,7 +45,7 @@ ref. [resource-controllers](https://laravel.com/docs/5.7/controllers#resource-co
 
 ## Redis Cache Naming Rule
 
-使用`:`區分資源階層  
+使用`:`區分資源階層
 
 ```bash
 SET admin:{id}:roles 'somestring'
@@ -120,3 +120,10 @@ return [
 ```bash
 php artisan nav_items:cache_clear
 ```
+
+## 專案使用方法
+
+- 新增公司
+- 批次匯入公司財報資料
+- 使用command計算該公司的ROE/IRR/RIR等數據
+- 從公司列表查看該公司的分析結果

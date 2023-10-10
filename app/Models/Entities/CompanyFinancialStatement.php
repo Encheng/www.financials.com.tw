@@ -4,9 +4,9 @@ namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FinancialStatement extends Model
+class CompanyFinancialStatement extends Model
 {
-    protected $table = 'financial_statements';
+    protected $table = 'company_financial_statements';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
@@ -19,6 +19,6 @@ class FinancialStatement extends Model
 
     public function company()
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsTo(Company::class);
     }
 }
