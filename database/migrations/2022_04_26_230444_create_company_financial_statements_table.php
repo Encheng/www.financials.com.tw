@@ -21,9 +21,18 @@ class CreateCompanyFinancialStatementsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('company_id');
             $table->integer('year');
+            $table->float('highest_price')
+                ->nullable()
+                ->comment('該年最高價格');
+            $table->float('lowest_price')
+                ->nullable()
+                ->comment('該年最高價格');
             $table->float('eps');
             $table->float('div');
-            $table->float('roe');
+            $table->float('roe')->comment('公司賺錢的效率');
+            $table->float('net_income')->comment('淨利潤');
+            $table->float('non_current_assets')->comment('長期投資（非流動資產）');
+            $table->float('fixed_assets')->comment('固定資產');
             $table->timestamps();
         });
     }

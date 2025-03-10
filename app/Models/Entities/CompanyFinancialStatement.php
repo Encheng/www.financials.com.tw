@@ -12,9 +12,14 @@ class CompanyFinancialStatement extends Model
         'id',
         'company_id',
         'year',
+        'highest_price',
+        'lowest_price',
         'eps',
         'div',
         'roe',
+        'net_income',
+        'non_current_assets',
+        'fixed_assets',
     ];
 
     public function company()

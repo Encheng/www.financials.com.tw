@@ -25,7 +25,8 @@ class CreateCompaniesTable extends Migration
             $table->longText('introduction');
             $table->string('stock_exchanges');
             $table->string('stock_price');
-            $table->string('nav');
+            $table->string('nav')->comment('股票淨值');
+            $table->string('per')->comment('P/E ratio, EPS/stock price');
             $table->timestamps();
         });
     }

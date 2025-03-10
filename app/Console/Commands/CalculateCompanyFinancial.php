@@ -60,7 +60,12 @@ class CalculateCompanyFinancial extends Command
                         ->orderBy('year', 'desc')
                         ->first();
 
-                    $company->per = $company->stock_price / $first_financial_statement->eps;
+                    // 如果EPS為0或負數，代表該公司不適用、不可用本益比作為判斷
+                    if (!empty($first_financial_statement->eps)) {
+                        $company->per = $company->stock_price / $first_financial_statement->eps;
+                    } else {
+                        $company->per = 0;
+                    }
                     $company->save();
                 }
             });
